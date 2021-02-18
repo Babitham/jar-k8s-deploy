@@ -4,25 +4,27 @@ pipeline {
       maven 'maven'
   }
   stages {
-    stage('Maven Install') {
-	agent any
+    stage('Maven Build') {
       	steps {
 		sh 'mvn -B -DskipTests clean compile package'
       	}
     }
+    stage('Test') {
+       steps {
+	    sh 'mvn test'
+	  }
+    }
     stage('Build-Image') {
-      agent any
       steps {
         sh 'docker build -t srirammk18/java-app":$BUILD_NUMBER" .'
       }
     }
-	stage ('Push-Image') {
-      agent any
-      steps {
+      stage ('Push-Image') {
+        steps {
         withDockerRegistry([ credentialsId: "dockerhub_id", url: "" ]) {
           sh 'docker push srirammk18/java-app":$BUILD_NUMBER"'
         }
       }
-	}
+    }
   }
 }
