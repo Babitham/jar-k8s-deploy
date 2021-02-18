@@ -1,9 +1,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>app</groupId>
-  <artifactId>app</artifactId>
+  <groupId>test</groupId>
+  <artifactId>test</artifactId>
   <packaging>jar</packaging>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>1.0.0-SNAPSHOT</version>
   <name>test</name>
   <url>http://maven.apache.org</url>
   
@@ -26,7 +26,6 @@
   
    <build>
     <plugins>
-    <!-- compiling -->
      <plugin>
     <groupId>org.apache.maven.plugins</groupId>
     <artifactId>maven-compiler-plugin</artifactId>
@@ -36,14 +35,12 @@
         <target>1.8</target>
     </configuration>
     </plugin>
-         <!-- testing  -->
         <plugin>
     <groupId>org.apache.maven.plugins</groupId>
     <artifactId>maven-surefire-plugin</artifactId>
     <version>2.19.1</version>
         </plugin>
       <plugin>
-        <!-- Build an executable JAR -->
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
         <configuration>
@@ -56,7 +53,6 @@
           </archive>
         </configuration>
       </plugin>
-     <!-- Apache Maven Shade Plugin -->
       <plugin>
     <groupId>org.apache.maven.plugins</groupId>
     <artifactId>maven-shade-plugin</artifactId>
