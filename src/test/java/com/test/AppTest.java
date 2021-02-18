@@ -8,9 +8,8 @@ public class AppTest {
 
 	@Test
 	public void Sampletest() {
-		int a = 1;
-		int b = 4;
-		assertTrue(a+b == 5);
+		int test = 999;
+		assertTrue(test == 999);
 	}
 
 }
