@@ -13,14 +13,14 @@ pipeline {
     stage('Build-Image') {
       agent any
       steps {
-        sh 'docker build -t srirammk18/helloJava .'
+        sh 'docker build -t srirammk18/java-app + ":$BUILD_NUMBER" .'
       }
     }
 	stage ('Push-Image') {
       agent any
       steps {
         withDockerRegistry([ credentialsId: "dockerhub_id", url: "" ]) {
-          sh 'docker push srirammk18/helloJava'
+          sh 'docker push srirammk18/java-app + ":$BUILD_NUMBER"'
         }
       }
 	}
