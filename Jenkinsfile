@@ -1,4 +1,3 @@
-
 pipeline {
   environment {
   IBM_CLOUD_REGION = 'eu-de'
