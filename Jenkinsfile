@@ -16,18 +16,18 @@ pipeline {
   stages { 
     stage('Maven Build') {
 	    steps {
-				sh 'mvn -B -DskipTests clean compile package'
+				bat 'mvn -B -DskipTests clean compile package'
 			}
 		}
 		stage('Test') {
 			steps {
-				sh 'mvn test'
+				bat 'mvn test'
 			}
 		}   
     stage('Install IBM Cloud CLI') {
       steps { 
-        sh ''' 
-            curl -fsSL https://clis.cloud.ibm.com/install/linux | sh
+        bat ''' 
+            curl -fsSL https://clis.cloud.ibm.com/install/linux | bat
             ibmcloud --version
             ibmcloud config --check-version=false
             ibmcloud plugin install -f kubernetes-service
@@ -37,7 +37,7 @@ pipeline {
     }
     stage('Authenticate with IBM Cloud CLI') {
       steps {
-        sh '''
+        bat '''
             ibmcloud login --apikey ${IBM_API_KEY} -r "${IBM_CLOUD_REGION}" -g Default
             ibmcloud ks cluster config --cluster ${IKS_CLUSTER}
             '''
@@ -61,7 +61,7 @@ pipeline {
     }
     stage('Deploy to IKS') {
       steps {
-        sh '''
+        bat '''
             ibmcloud ks cluster config --cluster ${IKS_CLUSTER}
             kubectl config current-context
             kubectl create deployment ${DEPLOYMENT_NAME} --image=srirammk18/jar-k8s:$BUILD_NUMBER --dry-run -o yaml > deployment.yaml
