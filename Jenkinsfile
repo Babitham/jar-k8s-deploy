@@ -26,13 +26,9 @@ pipeline {
 		}  
 	   stage('Install IBM Cloud CLI') {
       steps { 
-        powershell ''' 
+        powershell 
             iex(New-Object Net.WebClient).DownloadString('https://clis.cloud.ibm.com/install/powershell')
-            ibmcloud --version
-            ibmcloud config --check-version=false
-            ibmcloud plugin install -f kubernetes-service
-            ibmcloud plugin install -f container-registry
-            '''
+            
       }
     }
   
