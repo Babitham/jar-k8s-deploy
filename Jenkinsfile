@@ -26,9 +26,9 @@ pipeline {
 		}  
 	   stage('Install IBM Cloud CLI') {
       steps { 
-        powershell 
+        powershell ...
             iex(New-Object Net.WebClient).DownloadString('https://clis.cloud.ibm.com/install/powershell')
-            
+            ...
       }
     }
   
