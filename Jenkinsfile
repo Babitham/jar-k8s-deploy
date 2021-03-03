@@ -2,10 +2,10 @@ pipeline {
   environment {
   IBM_CLOUD_REGION = 'eu-de'
   REGISTRY_HOSTNAME = 'de.icr.io'
-  IKS_CLUSTER = 'c0qnsr4f0hems8rp3cmg'
+  IKS_CLUSTER = 'c0sf25ud0fesivtjm07g'
   DEPLOYMENT_NAME = 'iks-jar'
   PORT = '5002'
-  registry = "srirammk18/jar-k8s"
+  registry = "babitham/jar-k8s"
   registryCredential = 'dockerhub_id'
   dockerImage = ''
   }
